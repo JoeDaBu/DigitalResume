@@ -14,11 +14,11 @@ function App() {
     <Router>
       <Header/>
       <Sidebar/>
-      <Route path='/' exact>
-        <div>
+      <Route path='/' exact component={Home} />
+        {/* <div>
           test
         </div>
-      </Route>
+      </Route> */}
       <Route path='/projects' component={Projects} />
       <Route path='/work' component={Work} />
       <Route path='/timeline' component={Timeline} />

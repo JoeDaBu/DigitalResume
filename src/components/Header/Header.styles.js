@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   width: 100%;
+  /* z-index: -100; */
 `;
 
 export const LinkH = styled.div`
