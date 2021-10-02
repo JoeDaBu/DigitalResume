@@ -1,35 +1,34 @@
 import React from 'react'
-import { LinkH, Wrapper, LinkE } from './Header.styles'
-import { Link } from 'react-router-dom'
+import { LinkH, Wrapper, LinkE, SLink } from './Header.styles'
 
 const Header = () => {
   return (
     <Wrapper>
-      <Link to = '/'>
+      <SLink to = '/'>
         <LinkH>
           Joe Bu
         </LinkH>
-      </Link>
-      <Link to='/projects'>
+      </SLink>
+      <SLink to='/projects'>
         <LinkH>
           Projects
         </LinkH>
-      </Link>
-      <Link to='/work'>
+      </SLink>
+      <SLink to='/work'>
         <LinkH>
           Work
         </LinkH>
-      </Link>
-      <Link to='/timeline'>
+      </SLink>
+      <SLink to='/timeline'>
         <LinkH>
           Timeline
         </LinkH>
-      </Link>
-       <Link to='/contact'>
+      </SLink>
+       <SLink to='/contact'>
         <LinkE>
           Contact
         </LinkE>
-      </Link>
+      </SLink>
       </Wrapper>
   )
 }
