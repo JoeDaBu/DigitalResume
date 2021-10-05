@@ -8,12 +8,12 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Work from './components/Work';
 import { BackImage } from './App.styles'
-import { BackImg } from './images'
+import { BackImg, SpongeBob } from './images'
 
 function App() {
   return (
     <Router>
-      <BackImage src={BackImg} />
+      <BackImage src={SpongeBob} />
       <Header/>
       <Sidebar/>
       <Route path='/' exact component={Home} />
