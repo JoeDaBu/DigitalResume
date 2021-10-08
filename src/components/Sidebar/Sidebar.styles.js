@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
   color: black;
   background-color: none;
   position: absolute;
-  z-index: -100;
+  z-index: 100;
   top: 50%;
   transform: translateY(-50%);
 `;
