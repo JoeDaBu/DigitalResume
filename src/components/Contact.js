@@ -1,5 +1,5 @@
 import React from 'react'
-import { LabelF, TextBox, MessageBox, Form, FieldID, Header } from './Contact.styles'
+import { LabelF, TextBox, MessageBox, Form, FieldID, Header, Submit } from './Contact.styles'
 
 const info = ['Email:', 'Name:', 'Subject:', 'Urgency:']
 const messPH = 'Message:'
@@ -8,7 +8,7 @@ const Contact = () => {
   const FFields = info.map((field => 
       <LabelF>
         <FieldID>{field}</FieldID>
-        <TextBox placeholder={field} />
+        <TextBox rows = '1' placeholder={field} />
       </LabelF>
     ))
   return (
@@ -21,9 +21,9 @@ const Contact = () => {
         {FFields}
         <LabelF>
           <FieldID>{messPH}</FieldID>
-          <MessageBox placeholder={messPH} />
+          <MessageBox rows='4' placeholder={messPH} />
         </LabelF>
-        <input type='submit' value="Submit" />
+        <Submit type='submit' value='Submit'/>
       </Form>
     </div>
   )
