@@ -8,8 +8,12 @@ export const Wrapper = styled.div`
 `;
 
 export const LinkH = styled.div`
+  width: 58px;
   color: red;
   margin: 5px;
+  margin-left: 0px;
+  align-items: center;
+  text-align: center;
 `;
 
 export const LinkE = styled.div`
