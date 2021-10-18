@@ -14,7 +14,7 @@ const Work = () => {
           <Typography variant="h3">Carousel</Typography>
         </Grid>
         <Grid item container xs={12} justifyContent='center'>
-          <Grid item >
+          <Grid item xs={10}>
             <PostCard />
           </Grid>
         </Grid>

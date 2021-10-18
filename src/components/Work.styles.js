@@ -40,19 +40,19 @@ const SwiperWrapper = styled.div`
 
 const useStyles = makeStyles({
   media: {
-    height: '100%',
-    // paddingTop: "100%",
+    height: 0,
+    paddingTop: "100%",
     // paddingBottom: '50%'
-    padding: '5%',
-    // width: '80%',
+    // padding: '5%',
+    width: '100%',
     // paddingLeft: '10vh',
     backgroundColor: 'purple',
   },
   swiperContainer: {
     // paddingBottom: '3rem',
     backgroundColor: 'red',
-    height: '50vh',
-    width: '100%',
+    // height: '50vh',
+    // width: '100%',
 
     '& .swiper-pagination-bullet': {
       background: 'red'
@@ -65,8 +65,8 @@ const useStyles = makeStyles({
       fontSize: '1rem !important'
     },
     '& .swiper-slide': {
-      width: '12rem',
-      background: 'yellow',
+      // width: '12rem',
+      // background: 'yellow',
       // margin: '1rem',
       // justifyContent: 'center',
       // alignContent: 'center',
@@ -96,18 +96,23 @@ const PostCard = () => {
         grabCursor
         keyboard={{ enabled: true }}
         pagination={{ clickable: true }}
-        navigation
+        navigation= {{
+          nextEl: '&. swiper-button-next-mine',
+          prevEl: '&. swiper-button-prev-mine',
+        }}
         loop
         className={swiperContainer}
-        centeredSlides={true}
+        // centeredSlides={true}
       >
         <SwiperWrapper>
           {images.map((image, index) => (
-            <SwiperSlide key={index} centerSlides={true}>
+            <SwiperSlide key={index}>
               <CardMedia className={media} image={image}></CardMedia>
             </SwiperSlide>
           ))}
         </SwiperWrapper>
+        <div className={ 'swiper-button-prev-mine' }></div>
+        <div className={ 'swiper-button-next-mine' }></div>
       </Swiper>
 
       {/* <CardActions disableSpacing> */}
