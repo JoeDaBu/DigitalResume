@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React, {useRef} from 'react'
 import {
   Avatar,
   Card,
@@ -36,11 +37,39 @@ import "swiper/components/scrollbar/scrollbar.min.css";
 
 const SwiperWrapper = styled.div`
   justify-content: center;
+  width: 5px;
+`;
+
+const NavArrowsNext = styled.div`
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  cursor: pointer;
+`;
+
+const NavArrowsPrev = styled.div`
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: auto;
+  cursor: pointer;
 `;
 
 const useStyles = makeStyles({
+  cardCon: {
+    position: 'relative',
+    md: 'w-1/6',
+  },
+
   media: {
-    height: 0,
+    // height: '100%',
     paddingTop: "100%",
     // paddingBottom: '50%'
     // padding: '5%',
@@ -49,27 +78,43 @@ const useStyles = makeStyles({
     backgroundColor: 'purple',
   },
   swiperContainer: {
-    // paddingBottom: '3rem',
-    backgroundColor: 'red',
-    // height: '50vh',
-    // width: '100%',
+    // backgroundColor: 'red',
+    marginLeft: '80px', 
+    marginRight: '80px', 
+    position: 'unset',
 
     '& .swiper-pagination-bullet': {
       background: 'red'
     },
-    '& .swiper-button-next:after': {
+    '& .swiper-button-next-mine': {
       fontSize: '1rem !important',
-      // transform: 'translateX(25px)'
+      display: 'flex',
+      alignItems: 'center',
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      left: 'auto',
+      right: 0,
+      cursor: 'pointer',
+      backgroundColor: 'red',
     },
-    '& .swiper-button-prev:after': {
-      fontSize: '1rem !important'
+    '& .swiper-button-prev-mine': {
+      fontSize: '1rem !important',
+      display: 'flex',
+      alignItems: 'center',
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 'auto',
+      cursor: 'pointer',
+      backgroundColor: 'red',
     },
     '& .swiper-slide': {
-      // width: '12rem',
-      // background: 'yellow',
-      // margin: '1rem',
-      // justifyContent: 'center',
-      // alignContent: 'center',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+
     }
   }
 });
@@ -78,54 +123,55 @@ SwiperCore.use([Keyboard, Scrollbar, Pagination, Navigation]);
 const images = [GithubIcon, YoutubeIcon, LinkedInIcon, InstagramIcon];
 
 const PostCard = () => {
-  const { media, swiperContainer } = useStyles();
+  const { media, swiperContainer, cardCon } = useStyles();
+  const navigationPrevRef = React.useRef(null)
+  const navigationNextRef = React.useRef(null)
   return (
-    <Card>
-      {/* <CardHeader
-        avatar={<Avatar src={SpongeBob} />}
-        title="Just a carousel"
-        subheader={new Date().toDateString()}
-        action={
-          <IconButton>
-            <MoreVertIcon />
-          </IconButton>
-        }
-      /> */}
-
+    <Card className={cardCon}>
       <Swiper
         grabCursor
         keyboard={{ enabled: true }}
         pagination={{ clickable: true }}
         navigation= {{
-          nextEl: '&. swiper-button-next-mine',
-          prevEl: '&. swiper-button-prev-mine',
+          // nextEl: '.swiper-button-next-mine',
+          // prevEl: '.swiper-button-prev-mine',
+          prevEl: navigationPrevRef.current,
+          nextEl: navigationNextRef.current,
         }}
+        onBeforeInit={(swiper) => {
+              swiper.params.navigation.prevEl = navigationPrevRef.current;
+              swiper.params.navigation.nextEl = navigationNextRef.current;
+        }}
+        slidesPerView={1}
+        spaceBetween={0}
         loop
         className={swiperContainer}
+        watchOverflow={true}
         // centeredSlides={true}
       >
-        <SwiperWrapper>
-          {images.map((image, index) => (
+        {/* <SwiperSlide>
+          <div>
+            <p>Slide 2</p>
+            <p>Slide 2</p>
+            <p>Slide 2</p>
+            <p>Slide 2</p>
+            <p>Slide 2</p>
+            <p>Slide 2</p>
+          </div>
+        </SwiperSlide> */}
+        {images.map((image, index) => (
             <SwiperSlide key={index}>
               <CardMedia className={media} image={image}></CardMedia>
             </SwiperSlide>
           ))}
-        </SwiperWrapper>
-        <div className={ 'swiper-button-prev-mine' }></div>
-        <div className={ 'swiper-button-next-mine' }></div>
+        <div className={ '.swiper-button-prev-mine' } ref={navigationPrevRef}>
+          <img src={GithubIcon} alt={'test'} />
+        </div>
+        <div className={ '.swiper-button-next-mine' } ref={navigationNextRef}>
+          <img src={GithubIcon} alt={'test'} />
+        </div>
       </Swiper>
 
-      {/* <CardActions disableSpacing> */}
-        {/* <IconButton>
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton>
-          <CommentIcon />
-        </IconButton>
-        <IconButton>
-          <ShareIcon />
-        </IconButton>
-      </CardActions> */}
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           tsetsstesgegegegetgsegegegeg gegsggesgg gsgseg
