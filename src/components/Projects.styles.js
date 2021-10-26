@@ -30,7 +30,7 @@ import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/scrollbar/scrollbar.min.css";
-import YoutubeImage from "./Iframe Work";
+import YoutubeImage from "./Iframe Projects";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -43,14 +43,7 @@ export const Header = styled.h1`
   font-size: 6vh;
   margin-top: -10px;
   padding: 0px;
-  margin-bottom: 3vh;
-`;
-
-export const SubWork = styled.div`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: red;
+  margin-bottom: 4vh;
 `;
 
 const useStyles = makeStyles({
