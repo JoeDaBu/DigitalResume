@@ -13,7 +13,7 @@ import { BackImg, SpongeBob } from './images'
 function App() {
   return (
     <Router>
-      <BackImage src={SpongeBob} />
+      {/* <BackImage src={SpongeBob} /> */}
       <Header/>
       <Sidebar/>
       <Route path='/' exact component={Home} />
